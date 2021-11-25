@@ -1,0 +1,29 @@
+.custom{
+    color: black;
+
+    
+}
+
+.custom:hover{
+    color: white;
+}
+
+
+
+.test {
+
+    background-color: #fcfcfc;
+
+}
+.container{
+    padding-top: 20px;
+}
+
+:host ::ng-deep .row{
+    white-space: nowrap;
+    position: relative;
+}
+.inputBoxLabel{
+    margin-block: auto;
+    padding-top: 7px;
+}

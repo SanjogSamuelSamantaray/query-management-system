@@ -1,0 +1,14 @@
+<div class="card table-responsive card border-info">
+  <table class="table tab">
+    <thead>
+      <tr>
+        <th style="white-space: nowrap; overflow: hidden;" *ngFor="let item of objectKeys(datas[0])" scope="col">{{item | pascalcase | titlecase}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dr of datas">
+        <td *ngFor="let item of dr | keyvalue: originalOrder">{{ item.value }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

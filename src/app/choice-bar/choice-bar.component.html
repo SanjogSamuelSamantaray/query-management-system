@@ -1,0 +1,161 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid d-inline-block align-text-center">
+    <a class="navbar-brand" href="https://www.cozentus.com/">
+        <img src="../../assets/logo.png" alt="" width="180" height="20" class="d-inline-block align-text-center px-3">
+      </a>
+    <button
+      class="navbar-toggler ms-auto float-end"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav testnav me-auto mb-2 mb-lg-0">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link testnav dropdown-toggle dasd"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"  
+                >
+                  {{customerHeader}}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li *ngFor="let cust of customer"><a class="dropdown-item" (click)="updateData(cust,'Customer')">{{cust}}</a></li>
+                </ul>
+              </li>
+            </div>
+            <div class="col" *ngIf="customerVar != ''">
+              <li class="nav-item dropdown" >
+                <a
+                  class="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {{applicationHeader}}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li *ngFor="let app of application"><a class="dropdown-item" (click)="updateData(app, 'Application')">{{app}}</a></li>
+                </ul>
+              </li>
+            </div>
+            <div class="col" *ngIf="applicationVar != ''">
+              <li class="nav-item dropdown" >
+                <a
+                  class="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {{issueCategoryHeader}}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li *ngFor="let category of issueCategory"><a class="dropdown-item" (click)="updateData(category, 'IssueCategory')">{{category}}</a></li>
+                </ul>
+              </li>
+            </div>
+            <div class="col" *ngIf="issueCategoryVar != ''">
+              <li class="nav-item dropdown" >
+                <a
+                  class="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {{issueTypeHeader}}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li *ngFor="let issue of issueType"><a class="dropdown-item" (click)="updateData(issue, 'IssueType')">{{issue}}</a></li>
+                </ul>
+              </li>
+            </div>
+            <div class="col" *ngIf="issueTypeVar != ''">
+              <li class="nav-item dropdown" >
+                <a
+                  class="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {{processStepHeader}}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li *ngFor="let step of processStep"><a class="dropdown-item" (click)="updateData(step, 'ProcessStep')">{{step}}</a></li>
+                </ul>
+              </li>
+            </div>
+          </div>
+        </div>
+      </ul>
+      <form class="d-flex">
+        <button
+          class="btn btn-outline-info custom"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal" *ngIf="processStepVar !=''" (click)="getParameters()">
+          Show Parameters
+        </button>
+      </form>
+    </div>
+  </div>
+  </nav>
+  
+  <div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  >
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content test">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Enter the parameter values
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="dataTable" #parametersForm="ngForm" (ngSubmit)="onClickSubmit(parametersForm.value, $event)">
+          <div class="mb-3 row" *ngFor="let p of parameters">
+            <div class="col-3 inputBoxLabel">
+              <label  for={{p.ParameterName}} class="form-label">{{ p.ParameterName }}</label>
+            </div>
+            <div class="col-8">
+              <input type="text" class="form-control" name={{p.ParameterName}} placeholder={{p.ParameterName}} ngModel />
+            </div>
+          </div>
+          <button class="btn btn-outline-success" data-bs-dismiss="modal">
+            Show Results
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="container" *ngIf="status && tstatus">
+    <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-4">
+      <div class="col" *ngFor="let data of SourceData">
+        <data-cards [datas]="data"></data-cards>
+      </div>
+    </div>
+  </div>
