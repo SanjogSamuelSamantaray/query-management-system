@@ -8,6 +8,7 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ParameterServiceService } from '../service/parameter-service.service';
 
 
+
 @Component({
   selector: 'choice-bar',
   templateUrl: './choice-bar.component.html',

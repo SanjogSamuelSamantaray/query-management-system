@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid d-inline-block align-text-center">
     <a class="navbar-brand" href="https://www.cozentus.com/">
@@ -136,22 +137,26 @@
       </div>
       <div class="modal-body">
         <form id="dataTable" #parametersForm="ngForm" (ngSubmit)="onClickSubmit(parametersForm.value, $event)">
-          <div class="mb-3 row" *ngFor="let p of parameters">
+          <div class="mb-12 row" *ngFor="let p of parameters">
             <div class="col-3 inputBoxLabel">
               <label  for={{p.ParameterName}} class="form-label">{{ p.ParameterName }}</label>
             </div>
-            <div class="col-8">
+            <div class="col-12">
               <input type="text" class="form-control" name={{p.ParameterName}} placeholder={{p.ParameterName}} ngModel />
             </div>
           </div>
+          <br/>
           <button class="btn btn-outline-success" data-bs-dismiss="modal">
             Show Results
           </button>
         </form>
+        
       </div>
     </div>
   </div>
   </div>
+  <!-- <ng-http-loader></ng-http-loader> -->
+  
   <div class="container" *ngIf="status && tstatus">
     <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-4">
       <div class="col" *ngFor="let data of SourceData">

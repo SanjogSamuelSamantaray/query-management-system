@@ -9,6 +9,7 @@ import { CardsComponent } from './choice-bar/cards/cards.component';
 import { FormsModule } from '@angular/forms';
 import { PascalcasePipe } from './pipes/pascalcase.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -18,10 +19,15 @@ import { HttpClientModule } from '@angular/common/http';
     PascalcasePipe
   ],
   imports: [
+    NgxUiLoaderModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground:true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

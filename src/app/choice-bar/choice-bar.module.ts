@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChoiceBarComponent } from './choice-bar.component';
 import { ChoiceBarRoutingModule } from './choice-bar.routing.module';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+
 
 
 @NgModule({
@@ -14,7 +16,8 @@ import { ChoiceBarRoutingModule } from './choice-bar.routing.module';
     CommonModule,
     ChoiceBarRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxUiLoaderModule,
   ]
 })
 export class ChoiceBarModule { }
